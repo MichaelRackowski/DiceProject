@@ -21,8 +21,12 @@ function runGame(){
 	let resultDefenseThree;
 	let minValue;
 	let maxValue;
-	let resultHeal
-	let resultAttackThree
+	let resultHeal;
+	let didDamage1;
+	let resultAttackThree;
+	let didDamage2;
+	let didDodge1;
+	let didDodge2;
 
 	while(player1Health >= 0 && player2Health >= 0){
 	
@@ -46,7 +50,9 @@ function runGame(){
 		}
 		else if(resultMultiply % 2 ==1){
   			console.log("You missed your attack!!!")
+  			didDamage1 = false;
 		}
+
 	  	
 		resultTwo = "defense";
 		defense = roll(sidesDefend[0]);
@@ -58,17 +64,26 @@ function runGame(){
 
 		if(resultDodge % 2 == 0){
 	  		console.log("You dodged there attack!")
+	  		didDodge1 = true;
 		}
 		else if(resultDodge % 2 ==1){
 	  		console.log("You weren't fast enough to dodge there attack!")
 		}
 		maxValue= max(resultAttackTwo, resultDefenseTwo);
 		minValue = min(resultAttackTwo, resultDefenseTwo);
+		if(didDamage1 == true){
+		
+		if(didDodge1 == false){
 
-		resultDefenseThree = maxValue - minValue;
-		player2Health -= resultDefenseThree;
+		
+
+			resultDefenseThree = maxValue - minValue;
+			player2Health -= resultDefenseThree;
+		}
+		}
+		playerTurn++;
 	}
-	else{
+	else if (playerTurn == 2){
 		let result2 = prompt("player 2: heal or attack?");
 	
 		if(result2 == "heal"){
@@ -88,6 +103,7 @@ function runGame(){
 		}
 		else if(resultMultiply % 2 ==1){
 				console.log("You missed your attack!!!")
+				didDamage2 = false;
 		}
 		resultTwo = "defense";
 		defense = roll(sidesDefend[0]);
@@ -98,6 +114,7 @@ function runGame(){
 
 		if(resultDodge % 2 == 0){
 		  	console.log("You dodged there attack!")
+		  	didDodge2 =true;
 		}
 		else if(resultDodge % 2 ==1){
 		  	console.log("You weren't fast enough to dodge there attack!")
@@ -105,8 +122,15 @@ function runGame(){
 		maxValue= max(resultAttackTwo, resultDefenseTwo);
 		minValue = min(resultAttackTwo, resultDefenseTwo);
 
+		if(didDamage2 == true);{
+		
+		if(didDodge1 == false){
+		
 		resultDefenseThree = maxValue - minValue;
 		player2Health -= resultDefenseThree;
+		}
+		}
+		playerTurn--
 	}
 }
 
@@ -129,7 +153,3 @@ function min(a, b){
 		return a;
 	else return b;
 }
-
-
-
-runGame();
