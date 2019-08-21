@@ -28,6 +28,7 @@ function runGame(){
 	let didDodge1;
 	let didDodge2;
 	let result3;
+	let result2; 
 
 	while(player1Health >= 0 && player2Health >= 0){
 	
@@ -96,8 +97,8 @@ function runGame(){
 		}
 		playerTurn++;
 	}
-	else if (playerTurn == 2){
-		let result2 = prompt("player 2: heal or attack?");
+	if (playerTurn == 2){
+		 result2 = prompt("player 2: heal or attack?");
 	
 		if(result2 == "heal"){
 			heal = roll(sidesHeal[0]);
@@ -110,8 +111,18 @@ function runGame(){
 	 		resultAttackTwo = (attack * attackTwo);
 	  		resultMultiply = roll(sidesAttack[1]);
 			}	
-			else{
+			else if(heal == true){
 				player2Health += heal;
+			}
+		}
+		else if(result2 == "attack"){
+
+			attack = roll(sidesAttack[0]);
+	 		attackOne = roll(sidesAttack[1]);
+	  		attackTwo = roll(sidesAttack[2]);
+
+	 		resultAttackTwo = (attack * attackTwo);
+	  		resultMultiply = roll(sidesAttack[1]);
 			}
 		}
 		if(resultMultiply % 2 == 0){
@@ -151,7 +162,7 @@ function runGame(){
 	}
 }
 
-	  	}	
+	  		
 		
 
 
