@@ -37,20 +37,21 @@ function runGame(){
 
 		if(result == "heal"){
 			heal = roll(sidesHeal[0]);
-			if (heal == false){
-
-			attack = roll(sidesAttack[0]);
-	 		attackOne = roll(sidesAttack[1]);
-	  		attackTwo = roll(sidesAttack[2]);
-
-	 		resultAttackTwo = (attack * attackTwo);
-	  		resultMultiply = roll(sidesAttack[1]);
-			}	
-			else{
+			if (heal  > 0 ){
 				player1Health += heal;
-			}
+
+			// attack = roll(sidesAttack[0]);
+	 	// 	attackOne = roll(sidesAttack[1]);
+	  // 		attackTwo = roll(sidesAttack[2]);
+
+	 	// 	resultAttackTwo = (attack * attackTwo);
+	  // 		resultMultiply = roll(sidesAttack[1]);
+			 }	
+			// else{
+			// 	player1Health += heal;
+			// }
 		}
-		else if(result == "attack"){
+		else if(result == "attack" && result!== "heal"){
 			attack = roll(sidesAttack[0]);
 	 		attackOne = roll(sidesAttack[1]);
 	  		attackTwo = roll(sidesAttack[2]);
@@ -61,6 +62,7 @@ function runGame(){
 	
 		if(resultAttackTwo % 2 == 0){
 	  		console.log("Its a hit!!!")
+	  		didDamage1 = true;
 		}
 		else if(resultAttackTwo % 2 ==1){
   			console.log("You missed your attack!!!")
@@ -81,6 +83,7 @@ function runGame(){
 		}
 		else if(resultDodge % 2 ==1){
 	  		console.log("You weren't fast enough to dodge there attack!")
+			didDodge1 = false;
 		}
 		maxValue= max(resultAttackTwo, resultDefenseTwo);
 		minValue = min(resultAttackTwo, resultDefenseTwo);
@@ -101,20 +104,21 @@ function runGame(){
 	
 		if(result2 == "heal"){
 			heal = roll(sidesHeal[0]);
-			if (heal == false){
-
-			attack = roll(sidesAttack[0]);
-	 		attackOne = roll(sidesAttack[1]);
-	  		attackTwo = roll(sidesAttack[2]);
-
-	 		resultAttackTwo = (attack * attackTwo);
-	  		resultMultiply = roll(sidesAttack[1]);
-			}	
-			else if(heal == true){
+			if (heal > 0){
 				player2Health += heal;
-			}
+
+			// attack = roll(sidesAttack[0]);
+	 	// 	attackOne = roll(sidesAttack[1]);
+	  // 		attackTwo = roll(sidesAttack[2]);
+
+	 	// 	resultAttackTwo = (attack * attackTwo);
+	  // 		resultMultiply = roll(sidesAttack[1]);
+			}	
+			// else if(heal == true){
+			// 	player2Health += heal;
+			// }
 		}
-		else if(result2 == "attack"){
+		else if(result2 == "attack" && result2 !== "heal"){
 
 			attack = roll(sidesAttack[0]);
 	 		attackOne = roll(sidesAttack[1]);
@@ -126,6 +130,7 @@ function runGame(){
 		}
 		if(resultAttackTwo % 2 == 0){
 				console.log("Its a hit!!!")
+				didDamage2 = true;
 		}
 		else if(resultAttackTwo % 2 ==1){
 				console.log("You missed your attack!!!")
@@ -140,11 +145,12 @@ function runGame(){
 
 		if(resultDodge % 2 == 0){
 		  	console.log("You dodged there attack!")
-		  	didDodge2 =true;
+		  	didDodge2 = true;
 
 		}
 		else if(resultDodge % 2 ==1){
 		  	console.log("You weren't fast enough to dodge there attack!")
+			didDodge2 = false;
 		}
 		maxValue= max(resultAttackTwo, resultDefenseTwo);
 		minValue = min(resultAttackTwo, resultDefenseTwo);
