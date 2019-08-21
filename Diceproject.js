@@ -27,6 +27,7 @@ function runGame(){
 	let didDamage2;
 	let didDodge1;
 	let didDodge2;
+	let result3;
 
 	while(player1Health >= 0 && player2Health >= 0){
 	
@@ -35,6 +36,18 @@ function runGame(){
 
 		if(result == "heal"){
 			heal = roll(sidesHeal[0]);
+			if (heal == false){
+
+			attack = roll(sidesAttack[0]);
+	 		attackOne = roll(sidesAttack[1]);
+	  		attackTwo = roll(sidesAttack[2]);
+
+	 		resultAttackTwo = (attack * attackTwo);
+	  		resultMultiply = roll(sidesAttack[1]);
+			}	
+			else{
+				player1Health += heal;
+			}
 		}
 		else if(result == "attack"){
 			attack = roll(sidesAttack[0]);
@@ -88,16 +101,19 @@ function runGame(){
 	
 		if(result2 == "heal"){
 			heal = roll(sidesHeal[0]);
-		}
-		else if(resultAttackThree == "attack"){
+			if (heal == false){
+
 			attack = roll(sidesAttack[0]);
-			attackOne = roll(sidesAttack[1]);
-			attackTwo = roll(sidesAttack[2]);
+	 		attackOne = roll(sidesAttack[1]);
+	  		attackTwo = roll(sidesAttack[2]);
 
-			resultAttackTwo = (attack * attackTwo);
-			resultMultiply = roll(sidesAttack[1]);
+	 		resultAttackTwo = (attack * attackTwo);
+	  		resultMultiply = roll(sidesAttack[1]);
+			}	
+			else{
+				player2Health += heal;
+			}
 		}
-
 		if(resultMultiply % 2 == 0){
 				console.log("Its a hit!!!")
 		}
@@ -115,6 +131,7 @@ function runGame(){
 		if(resultDodge % 2 == 0){
 		  	console.log("You dodged there attack!")
 		  	didDodge2 =true;
+
 		}
 		else if(resultDodge % 2 ==1){
 		  	console.log("You weren't fast enough to dodge there attack!")
