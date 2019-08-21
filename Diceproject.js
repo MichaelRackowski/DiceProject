@@ -56,13 +56,13 @@ function runGame(){
 	  		attackTwo = roll(sidesAttack[2]);
 
 	 		resultAttackTwo = (attack * attackTwo);
-	  		resultMultiply = roll(sidesAttack[1]);
+	  		
 		}
 	
-		if(resultMultiply % 2 == 0){
+		if(resultAttackTwo % 2 == 0){
 	  		console.log("Its a hit!!!")
 		}
-		else if(resultMultiply % 2 ==1){
+		else if(resultAttackTwo % 2 ==1){
   			console.log("You missed your attack!!!")
   			didDamage1 = false;
 		}
@@ -70,10 +70,9 @@ function runGame(){
 	  	
 		resultTwo = "defense";
 		defense = roll(sidesDefend[0]);
-		defenseOne = roll(sidesDefend[1]);
 		defenseTwo = roll(sidesDefend[2]);
-
 		resultDodge = roll(sidesDefend[1]);
+		
 		resultDefenseTwo =(defense + defenseTwo);
 
 		if(resultDodge % 2 == 0){
@@ -122,21 +121,21 @@ function runGame(){
 	  		attackTwo = roll(sidesAttack[2]);
 
 	 		resultAttackTwo = (attack * attackTwo);
-	  		resultMultiply = roll(sidesAttack[1]);
+	  	
 			}
 		}
-		if(resultMultiply % 2 == 0){
+		if(resultAttackTwo % 2 == 0){
 				console.log("Its a hit!!!")
 		}
-		else if(resultMultiply % 2 ==1){
+		else if(resultAttackTwo % 2 ==1){
 				console.log("You missed your attack!!!")
 				didDamage2 = false;
 		}
 		resultTwo = "defense";
 		defense = roll(sidesDefend[0]);
-		defenseOne = roll(sidesDefend[1]);
 		defenseTwo = roll(sidesDefend[2]);
 		resultDodge = roll(sidesDefend[1]);
+		
 		resultDefenseTwo =(defense + defenseTwo);
 
 		if(resultDodge % 2 == 0){
@@ -152,7 +151,7 @@ function runGame(){
 
 		if(didDamage2 == true);{
 		
-		if(didDodge1 == false){
+		if(didDodge2 == false){
 		
 		resultDefenseThree = maxValue - minValue;
 		player2Health -= resultDefenseThree;
